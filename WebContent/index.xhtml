@@ -4,11 +4,19 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:namespace="http://java.sun.com/jsf/composite/namespace">
 
 
 <h:head></h:head>
 <h:body>
-	<h1>Hola mundo !</h1>
+	<h:form>
+		<h1>CRUD</h1>
+		<h2>Buscar cliente:</h2>
+		<h:outputText value="Nombre del cliente" style="color:black" />
+		<h:inputText id="nombreUsuario" value="#{clienteBean.nombre}" />
+		<h:commandButton value="Ingresar"
+			action="#{clienteBean.BuscarCliente()}"></h:commandButton>
+	</h:form>
 </h:body>
 </html>
