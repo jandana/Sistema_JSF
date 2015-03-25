@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head></h:head>
+
+<body>
+<h1>Los datos del cliente son:</h1>
+	<table>
+		<tr>
+			<td><h:outputText value="RUT: " style="color:black" /></td>
+			<td><h:outputText value="#{clienteBean.cliente.rut}"
+					style="color:black" /></td>
+		</tr>
+		<tr>
+			<td><h:outputText value="Nombre: " style="color:black" /></td>
+			<td><h:outputText value="#{clienteBean.cliente.nombre}"
+					style="color:black" /></td>
+		</tr>
+		<tr>
+			<td><h:outputText value="Apellido paterno: " style="color:black" />
+			</td>
+			<td><h:outputText value="#{clienteBean.cliente.apellidoP}"
+					style="color:black" /></td>
+		</tr>
+		<tr>
+			<td><h:outputText value="Apellido materno: " style="color:black" />
+			</td>
+			<td><h:outputText value="#{clienteBean.cliente.apellidoM}"
+					style="color:black" /></td>
+		</tr>
+		<tr>
+			<td><h:outputText value="Email: " style="color:black" /></td>
+			<td><h:outputText value="#{clienteBean.cliente.email}"
+					style="color:black" /></td>
+		</tr>
+	</table>
+</body>
+</html>

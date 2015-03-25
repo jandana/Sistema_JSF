@@ -1,26 +1,24 @@
 package beans;
 
+import java.util.ArrayList;
+
 import javax.faces.bean.SessionScoped;
+import javax.faces.component.html.HtmlDataTable;
 
 import dao.impl.DAOCliente;
 import modelo.Cliente;
-import java.io.Serializable;
+
 /**
  * Session Bean implementation class ClienteBean
  */
-
-
-
-import javax.faces.application.FacesMessage;
-import javax.faces.component.UIComponent;
-import javax.faces.context.FacesContext;
-
 
 @SessionScoped
 public class ClienteBean {
 	private DAOCliente daoCliente = new DAOCliente();
 	private String nombre;
 	private Cliente cliente;
+	private ArrayList<Cliente> todosLosClientes;
+	private HtmlDataTable tablaTodosLosClientes;
 
 	public ClienteBean() {
 
@@ -36,17 +34,13 @@ public class ClienteBean {
 
 	public String BuscarCliente() {
 		this.cliente = daoCliente.buscarCliente(nombre);
-		System.out.println("dadsad");
-		return "resultado";
 
-	}
+		if (cliente.getNombre() == null) {
+			return "clienteNoEncontrado";
+		} else {
+			return "clienteEncontrado";
+		}
 
-	public DAOCliente getDaoCliente() {
-		return daoCliente;
-	}
-
-	public void setDaoCliente(DAOCliente daoCliente) {
-		this.daoCliente = daoCliente;
 	}
 
 	public Cliente getCliente() {
@@ -56,5 +50,22 @@ public class ClienteBean {
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
-	
+
+	public ArrayList<Cliente> getTodosLosClientes() {
+
+		return todosLosClientes = daoCliente.getTodosLosCLientes();
+	}
+
+	public void setTodosLosClientes(ArrayList<Cliente> todosLosClientes) {
+		this.todosLosClientes = todosLosClientes;
+	}
+
+	public HtmlDataTable getTablaTodosLosClientes() {
+		return tablaTodosLosClientes;
+	}
+
+	public void setTablaTodosLosClientes(HtmlDataTable tablaTodosLosClientes) {
+		this.tablaTodosLosClientes = tablaTodosLosClientes;
+	}
+
 }

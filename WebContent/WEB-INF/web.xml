@@ -2,23 +2,35 @@
 <web-app id="WebApp_ID" version="2.5"
 	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee     http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
-	<display-name>Aplicación Web con JSF</display-name>
+	<!-- Nombre del sistema -->
+	<display-name>Sistema JSF</display-name>
+
 	<context-param>
+		<description>State saving method: 'client' or 'server' (=default). See JSF Specification 2.5.2</description>
 		<param-name>javax.faces.CONFIG_FILES</param-name>
 		<param-value>/WEB-INF/faces-config.xml</param-value>
 	</context-param>
 	<!-- Definir este parámetro es más cómodo y más visual que usar el <ui:remove> 
-		de Facelets. -->
+		de Facelets. FACELETS_SKIP_COMMENTS hace que los comentarios no se vean al 
+		ejecutar el programa(de no especificarse aun utilizando las etiquetas de 
+		comentarios estos serian visibles) -->
 	<context-param>
-		<description>Do not render comments in facelets (xhtml) pages. Default is false.</description>
 		<param-name>javax.faces.FACELETS_SKIP_COMMENTS</param-name>
 		<param-value>true</param-value>
 	</context-param>
 	<!-- Cambiar a "Production" cuando la aplicación esté lista para desplegarse 
-		en ese entorno -->
+		en ese entorno, el estado actual de la aplicacion es en desarrollo -->
 	<context-param>
 		<param-name>javax.faces.PROJECT_STAGE</param-name>
 		<param-value>Development</param-value>
+	</context-param>
+	<!-- se guarda el estado de la app en el cliente de no ser especificado 
+		se guarda por default en el servidor, se supone que al especificar que se 
+		guarde en el cliente se ahorra ancho de banda o disminuye el consumo de memoria del servidor -->
+	<context-param>
+		<description>State saving method: 'client' or 'server' (=default). See JSF Specification 2.5.2</description>
+		<param-name>javax.faces.STATE_SAVING_METHOD</param-name>
+		<param-value>client</param-value>
 	</context-param>
 	<!-- JSF mapping -->
 	<servlet>
