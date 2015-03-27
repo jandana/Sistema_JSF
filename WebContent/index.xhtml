@@ -84,5 +84,40 @@
 			</h:dataTable>
 		</table>
 	</h:form>
+
+	<h2>Agregar un cliente</h2>
+	<h:form>
+		<table>
+			<tr>
+				<td><h:outputText value="RUT: "></h:outputText></td>
+				<td><h:inputText id="rut" value="#{clienteBean.nuevoCliente.rut}" /></td>
+			</tr>
+			<tr>
+				<td><h:outputText value="Nombre: "></h:outputText></td>
+				<td><h:inputText id="nombre"
+						value="#{clienteBean.nuevoCliente.nombre}" /></td>
+			</tr>
+			<tr>
+				<td><h:outputText value="Apellido Paterno:"></h:outputText></td>
+				<td><h:inputText id="apellidoP"
+						value="#{clienteBean.nuevoCliente.apellidoP}" /></td>
+			</tr>
+			<tr>
+				<td><h:outputText value="Apellido materno:"></h:outputText></td>
+				<td><h:inputText id="apellidoM"
+						value="#{clienteBean.nuevoCliente.apellidoM}" /></td>
+			</tr>
+			<tr>
+				<td><h:outputText value="Email:"></h:outputText></td>
+				<td><h:inputText id="email"
+						value="#{clienteBean.nuevoCliente.email}" /></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><h:commandButton value="Guardar"
+						action="#{clienteBean.agregarCliente}" /></td>
+			</tr>
+		</table>
+	</h:form>
 </h:body>
 </html>

@@ -96,7 +96,7 @@ public class DAOCliente implements IDAOCliente {
 			// setup statement and retrieve results
 			PreparedStatement pstmt = con
 					.prepareStatement("update cliente set nombre=?,apellidoPaterno=?, apellidoMaterno=?, email=? where RUT=?");
-			
+
 			pstmt.setString(1, nombre);
 			pstmt.setString(2, apellidoP);
 			pstmt.setString(3, apellidoM);
@@ -118,9 +118,44 @@ public class DAOCliente implements IDAOCliente {
 		}
 	}
 
-//	public static void main(String arrg[]) {
-//		DAOCliente c = new DAOCliente();
-//		c.actualizarCliente(174580227,"javierga","andana","quijada","dadasdada");
-//	}
+	@Override
+	public void agregarCliente(int RUT, String nombre, String apellidoP,
+			String apellidoM, String email) {
+		DAOController dc = new DAOController();
+		Connection con = dc.getConnection();
+
+		try {
+			PreparedStatement pstmt = con
+					.prepareStatement("insert into cliente(RUT,nombre,apellidoPaterno,apellidoMaterno,email) VALUES (?,?,?,?,?)");
+
+			pstmt.setInt(1, RUT);
+			pstmt.setString(2, nombre);
+			pstmt.setString(3, apellidoP);
+			pstmt.setString(4, apellidoM);
+			pstmt.setString(5, email);
+			pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+
+			// throw new DAOException(DAOException.IMPOSIBLE_MAKE_QUERY);
+		} finally {
+			try {
+				con.close();
+			} catch (SQLException e) {
+				// throw new
+				// DAOException(DAOException.IMPOSIBLE_CLOSE_CONNECTION);
+			}
+		}
+
+	}
+
+	public static void main(String arrg[]) {
+		DAOCliente c = new DAOCliente();
+		//c.actualizarCliente(174580227, "javierga", "andana", "quijada",
+			//F	"dadasdada");
+		//c.agregarCliente(123456789, "bart", "simpson", "bubie",
+			//	"bart@gmail.com");
+	}
 
 }

@@ -26,7 +26,11 @@
 		<navigation-case>
 			<from-outcome>EditarCliente</from-outcome>
 			<to-view-id>/editarCliente.xhtml</to-view-id>
-		</navigation-case>	
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>agregadoExitosamente</from-outcome>
+			<to-view-id>/index.xhtml</to-view-id>
+		</navigation-case>
 	</navigation-rule>
 
 	<navigation-rule>
