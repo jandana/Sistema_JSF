@@ -15,7 +15,7 @@ public class ClienteBean {
 	private DAOCliente daoCliente = new DAOCliente();
 	private String nombre;
 	private Cliente cliente;
-	private Cliente nuevoCliente=new Cliente();
+	private Cliente nuevoCliente = new Cliente();
 	private ArrayList<Cliente> todosLosClientes = new ArrayList<Cliente>();
 	private HtmlDataTable tablaTodosLosClientes;
 
@@ -50,11 +50,18 @@ public class ClienteBean {
 
 	// Agrega un cliente
 	public String agregarCliente() {
-		daoCliente.agregarCliente(nuevoCliente.getRut(), nuevoCliente.getNombre(),
-				nuevoCliente.getApellidoP(), nuevoCliente.getApellidoM(),
-				nuevoCliente.getEmail());
-		nuevoCliente=new Cliente();
+		daoCliente.agregarCliente(nuevoCliente.getRut(),
+				nuevoCliente.getNombre(), nuevoCliente.getApellidoP(),
+				nuevoCliente.getApellidoM(), nuevoCliente.getEmail());
+		nuevoCliente = new Cliente();
 		return "agregadoExitosamente";
+	}
+
+	// Elimina un cliente
+	public String eliminarCliente() {
+		cliente = (Cliente) tablaTodosLosClientes.getRowData();
+		daoCliente.eliminaCliente(cliente.getRut());
+		return "eliminadoExitosamente";
 	}
 
 	public String getNombre() {
@@ -97,5 +104,5 @@ public class ClienteBean {
 	public void setNuevoCliente(Cliente nuevoCliente) {
 		this.nuevoCliente = nuevoCliente;
 	}
-	
+
 }

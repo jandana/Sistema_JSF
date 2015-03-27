@@ -14,4 +14,6 @@ public interface IDAOCliente {
 
 	public void agregarCliente(int RUT, String nombre, String apellidoP,
 			String apellidoM, String email);
+
+	public void eliminaCliente(int RUT);
 }

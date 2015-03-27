@@ -33,11 +33,12 @@
 			</tr>
 		</table>
 
-		<!-- 2do menu tabla con todos los clientes del sistema -->
+		<!-- 2do menu tabla con todos los clientes del sistema y la opcion de editar o eliminar  -->
 		<!-- clienteBean.todosLosClientes	: Retorna un ArrayList con todos los clientes.
 			 clienteBean.tablaTodosLosClientes : Hace referencia al objeto de tipo HtmlDataTable del bean el cual se 
 			 								encarga de hacer la relacion del elemento de la tabla seleccionado.	
 			 clienteBean.seleccionCliente	: Es el metodo que obtiene los datos del cliente selecionado al hacer click en en link y retorna un String con el redireccionamiento. 	 								
+			 clienteBean.eliminarCliente	: El metodo que elimina al cliente. 
 		-->
 
 		<h2>Ver todos los clientes:</h2>
@@ -81,16 +82,26 @@
 					</f:facet>
 					<h:commandLink action="#{clienteBean.seleccionCliente}"> Editar </h:commandLink>
 				</h:column>s
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="ELIMINAR" style="color:black" />
+					</f:facet>
+					<h:commandLink action="#{clienteBean.eliminarCliente}"> Eliminar </h:commandLink>
+				</h:column>s
 			</h:dataTable>
 		</table>
 	</h:form>
 
+	<!-- 3er Menu permite agregar clientes al sistema -->
+	<!-- clienteBean.agregarCliente		: Invoca el metodo del bean que permite agregar un cliente nuevo a la BD
+		 -->
 	<h2>Agregar un cliente</h2>
 	<h:form>
 		<table>
 			<tr>
 				<td><h:outputText value="RUT: "></h:outputText></td>
-				<td><h:inputText id="rut" value="#{clienteBean.nuevoCliente.rut}" /></td>
+				<td><h:inputText id="rut"
+						value="#{clienteBean.nuevoCliente.rut}" /></td>
 			</tr>
 			<tr>
 				<td><h:outputText value="Nombre: "></h:outputText></td>
