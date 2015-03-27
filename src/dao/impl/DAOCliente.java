@@ -150,12 +150,41 @@ public class DAOCliente implements IDAOCliente {
 
 	}
 
+	@Override
+	public void eliminaCliente(int RUT) {
+		DAOController dc = new DAOController();
+		Connection con = dc.getConnection();
+
+		try {
+			// setup statement and retrieve results
+			PreparedStatement pstmt = con
+					.prepareStatement("DELETE FROM cliente WHERE RUT=?");
+
+			pstmt.setInt(1, RUT);
+
+			int a = pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+
+			// throw new DAOException(DAOException.IMPOSIBLE_MAKE_QUERY);
+		} finally {
+			try {
+				con.close();
+			} catch (SQLException e) {
+				// throw new
+				// DAOException(DAOException.IMPOSIBLE_CLOSE_CONNECTION);
+			}
+		}
+	}
+
 	public static void main(String arrg[]) {
 		DAOCliente c = new DAOCliente();
-		//c.actualizarCliente(174580227, "javierga", "andana", "quijada",
-			//F	"dadasdada");
-		//c.agregarCliente(123456789, "bart", "simpson", "bubie",
-			//	"bart@gmail.com");
+		// c.actualizarCliente(174580227, "javierga", "andana", "quijada",
+		// F "dadasdada");
+		// c.agregarCliente(123456789, "bart", "simpson", "bubie",
+		// "bart@gmail.com");
+		//c.eliminaCliente(123456789);
 	}
 
 }
