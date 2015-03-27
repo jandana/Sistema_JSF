@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf14267236425460" configfile="/Sistema_JSF/WebContent/WEB-INF/faces-config.xml">
-  <nodes xsi:type="pageflow:PFPage" name="index.xhtml" id="pf14272349937486" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf14272349937487 pf142723561170111" path="/index.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="resBusquedaCliente.xhtml" id="pf14272349937488" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf14272349937487" path="/resBusquedaCliente.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="error.xhtml" id="pf142723561170112" referenceLink="//@navigationRule.0/@navigationCase.1/@toViewId|" inlinks="pf142723561170111" path="/error.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="index.xhtml" id="pf14272349937486" referenceLink="//@navigationRule.0/@navigationCase.3/@toViewId|" outlinks="pf14272349937487 pf142723561170111 pf14274150065542" inlinks="pf14274152277226" path="/index.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="resBusquedaCliente.xhtml" x="228" y="24" id="pf14272349937488" referenceLink="//@navigationRule.1/@navigationCase.0/@toViewId|" inlinks="pf14272349937487" path="/resBusquedaCliente.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="error.xhtml" x="38" y="216" id="pf142723561170112" referenceLink="//@navigationRule.1/@navigationCase.1/@toViewId|" inlinks="pf142723561170111" path="/error.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="editarCliente.xhtml" id="pf14274150065544" referenceLink="//@navigationRule.1/@fromViewId|" outlinks="pf14274152277226" inlinks="pf14274150065542" path="/editarCliente.xhtml"/>
   <links id="pf14272349937487" target="pf14272349937488" source="pf14272349937486" outcome="clienteEncontrado"/>
   <links id="pf142723561170111" target="pf142723561170112" source="pf14272349937486" outcome="clienteNoEncontrado"/>
+  <links id="pf14274150065542" target="pf14274150065544" source="pf14272349937486" outcome="EditarCliente"/>
+  <links id="pf14274152277226" target="pf14272349937486" source="pf14274150065544" outcome="exito"/>
 </pageflow:Pageflow>

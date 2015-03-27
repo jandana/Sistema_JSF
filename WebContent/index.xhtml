@@ -34,14 +34,17 @@
 		</table>
 
 		<!-- 2do menu tabla con todos los clientes del sistema -->
-		<!-- clienteBean.todosLosClientes	:Retorna un ArrayList con todos los clientes.
+		<!-- clienteBean.todosLosClientes	: Retorna un ArrayList con todos los clientes.
+			 clienteBean.tablaTodosLosClientes : Hace referencia al objeto de tipo HtmlDataTable del bean el cual se 
+			 								encarga de hacer la relacion del elemento de la tabla seleccionado.	
+			 clienteBean.seleccionCliente	: Es el metodo que obtiene los datos del cliente selecionado al hacer click en en link y retorna un String con el redireccionamiento. 	 								
 		-->
 
 		<h2>Ver todos los clientes:</h2>
 		<table>
 
 			<h:dataTable value="#{clienteBean.todosLosClientes}" var="cliente"
-				border="1">
+				binding="#{clienteBean.tablaTodosLosClientes}" border="1">
 				<h:column>
 					<f:facet name="header">
 						<h:outputText value="RUT" style="color:black" />
@@ -71,6 +74,12 @@
 						<h:outputText value="EMAIL" style="color:black" />
 					</f:facet>
 					<h:outputText value="#{cliente.email}" style="color:black" />
+				</h:column>s
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="EDITAR" style="color:black" />
+					</f:facet>
+					<h:commandLink action="#{clienteBean.seleccionCliente}"> Editar </h:commandLink>
 				</h:column>s
 			</h:dataTable>
 		</table>

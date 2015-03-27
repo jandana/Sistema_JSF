@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head></h:head>
+<h:body>
+	<h2>Edicion de cliente</h2>
+	<h:form>
+		<table>
+			<tr>
+				<td><h:outputText value="RUT: "></h:outputText></td>
+				<td><h:outputText id="rut" value="#{clienteBean.cliente.rut}" /></td>
+			</tr>
+			<tr>
+				<td><h:outputText value="Nombre: "></h:outputText></td>
+				<td><h:inputText id="nombre"
+						value="#{clienteBean.cliente.nombre}" /></td>
+			</tr>
+			<tr>
+				<td><h:outputText value="Apellido Paterno:"></h:outputText></td>
+				<td><h:inputText id="apellidoP"
+						value="#{clienteBean.cliente.apellidoP}" /></td>
+			</tr>
+			<tr>
+				<td><h:outputText value="Apellido materno:"></h:outputText></td>
+				<td><h:inputText id="apellidoM"
+						value="#{clienteBean.cliente.apellidoM}" /></td>
+			</tr>
+			<tr>
+				<td><h:outputText value="Email:"></h:outputText></td>
+				<td><h:inputText id="email"
+						value="#{clienteBean.cliente.email}" /></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><h:commandButton value="Guardar"
+						action="#{clienteBean.actualizarCliente}" /></td>
+			</tr>
+		</table>
+	</h:form>
+</h:body>
+</html>

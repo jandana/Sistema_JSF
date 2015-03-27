@@ -62,10 +62,10 @@ public class DAOCliente implements IDAOCliente {
 
 			while (rs.next()) {
 				cliente = new Cliente();
+				cliente.setRut(rs.getInt("RUT"));
 				cliente.setNombre(rs.getString("nombre"));
 				cliente.setApellidoP(rs.getString("apellidoPaterno"));
 				cliente.setApellidoM(rs.getString("apellidoMaterno"));
-				cliente.setRut(rs.getInt("RUT"));
 				cliente.setEmail(rs.getString("email"));
 				clientes.add(cliente);
 			}
@@ -85,5 +85,42 @@ public class DAOCliente implements IDAOCliente {
 		}
 		return clientes;
 	}
+
+	@Override
+	public void actualizarCliente(int RUT, String nombre, String apellidoP,
+			String apellidoM, String email) {
+		DAOController dc = new DAOController();
+		Connection con = dc.getConnection();
+
+		try {
+			// setup statement and retrieve results
+			PreparedStatement pstmt = con
+					.prepareStatement("update cliente set nombre=?,apellidoPaterno=?, apellidoMaterno=?, email=? where RUT=?");
+			
+			pstmt.setString(1, nombre);
+			pstmt.setString(2, apellidoP);
+			pstmt.setString(3, apellidoM);
+			pstmt.setString(4, email);
+			pstmt.setInt(5, RUT);
+			pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+
+			// throw new DAOException(DAOException.IMPOSIBLE_MAKE_QUERY);
+		} finally {
+			try {
+				con.close();
+			} catch (SQLException e) {
+				// throw new
+				// DAOException(DAOException.IMPOSIBLE_CLOSE_CONNECTION);
+			}
+		}
+	}
+
+//	public static void main(String arrg[]) {
+//		DAOCliente c = new DAOCliente();
+//		c.actualizarCliente(174580227,"javierga","andana","quijada","dadasdada");
+//	}
 
 }
