@@ -135,34 +135,62 @@ public class DAOCliente implements IDAOCliente {
 	}
 
 	@Override
+<<<<<<< HEAD
 	public void eliminaCliente(int RUT) throws SQLException {
+=======
+	public void eliminaCliente(int RUT) {
+>>>>>>> Sistema_JSF/master
 		DAOController dc = new DAOController();
 		Connection con = dc.getConnection();
 
 		try {
+<<<<<<< HEAD
+=======
+			// setup statement and retrieve results
+>>>>>>> Sistema_JSF/master
 			PreparedStatement pstmt = con
 					.prepareStatement("DELETE FROM cliente WHERE RUT=?");
 
 			pstmt.setInt(1, RUT);
+<<<<<<< HEAD
 			pstmt.executeUpdate();
 
 		} catch (Exception e) {
 			throw new SQLException(e.getMessage());
+=======
+
+			int a = pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+
+			// throw new DAOException(DAOException.IMPOSIBLE_MAKE_QUERY);
+>>>>>>> Sistema_JSF/master
 		} finally {
 			try {
 				con.close();
 			} catch (SQLException e) {
+<<<<<<< HEAD
 				throw new SQLException(e.getMessage());
+=======
+				// throw new
+				// DAOException(DAOException.IMPOSIBLE_CLOSE_CONNECTION);
+>>>>>>> Sistema_JSF/master
 			}
 		}
 	}
 
 	public static void main(String arrg[]) {
+<<<<<<< HEAD
 		// DAOCliente c = new DAOCliente();
+=======
+		DAOCliente c = new DAOCliente();
+>>>>>>> Sistema_JSF/master
 		// c.actualizarCliente(174580227, "javierga", "andana", "quijada",
 		// F "dadasdada");
 		// c.agregarCliente(123456789, "bart", "simpson", "bubie",
 		// "bart@gmail.com");
+<<<<<<< HEAD
 		// c.eliminaCliente(123456789);
 		// System.out.println("dadasdasd");
 		// try {
@@ -172,6 +200,9 @@ public class DAOCliente implements IDAOCliente {
 		// System.out.println(e.getMessage());
 		// }
 
+=======
+		//c.eliminaCliente(123456789);
+>>>>>>> Sistema_JSF/master
 	}
 
 }

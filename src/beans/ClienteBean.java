@@ -54,7 +54,11 @@ public class ClienteBean {
 	}
 
 	// Agrega un cliente
+<<<<<<< HEAD
 	public String agregarCliente() throws SQLException {
+=======
+	public String agregarCliente() {
+>>>>>>> Sistema_JSF/master
 		daoCliente.agregarCliente(nuevoCliente.getRut(),
 				nuevoCliente.getNombre(), nuevoCliente.getApellidoP(),
 				nuevoCliente.getApellidoM(), nuevoCliente.getEmail());
@@ -63,7 +67,11 @@ public class ClienteBean {
 	}
 
 	// Elimina un cliente
+<<<<<<< HEAD
 	public String eliminarCliente() throws SQLException {
+=======
+	public String eliminarCliente() {
+>>>>>>> Sistema_JSF/master
 		cliente = (Cliente) tablaTodosLosClientes.getRowData();
 		daoCliente.eliminaCliente(cliente.getRut());
 		return "eliminadoExitosamente";
