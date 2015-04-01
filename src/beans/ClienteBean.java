@@ -1,10 +1,14 @@
 package beans;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
+
 import javax.faces.bean.SessionScoped;
 import javax.faces.component.html.HtmlDataTable;
-import dao.impl.DAOCliente;
+
 import modelo.Cliente;
+import dao.impl.DAOCliente;
+import exceptions.ClienteException;
 
 /**
  * Session Bean implementation class ClienteBean
@@ -24,9 +28,10 @@ public class ClienteBean {
 	}
 
 	// busca un cliente en base a su nombre
-	public String BuscarCliente() {
+	public String BuscarCliente() throws SQLException, ClienteException {
 		this.cliente = daoCliente.buscarCliente(nombre);
 		if (cliente.getNombre() == null) {
+			//throw new ClienteException();
 			return "clienteNoEncontrado";
 		} else {
 			return "clienteEncontrado";
@@ -35,13 +40,13 @@ public class ClienteBean {
 	}
 
 	// obtiene todos los clientes
-	public ArrayList<Cliente> getTodosLosClientes() {
+	public ArrayList<Cliente> getTodosLosClientes() throws SQLException {
 		todosLosClientes = daoCliente.getTodosLosCLientes();
 		return todosLosClientes;
 	}
 
 	// Actualiza un cliente
-	public String actualizarCliente() {
+	public String actualizarCliente() throws SQLException {
 		daoCliente.actualizarCliente(cliente.getRut(), cliente.getNombre(),
 				cliente.getApellidoP(), cliente.getApellidoM(),
 				cliente.getEmail());
@@ -49,7 +54,7 @@ public class ClienteBean {
 	}
 
 	// Agrega un cliente
-	public String agregarCliente() {
+	public String agregarCliente() throws SQLException {
 		daoCliente.agregarCliente(nuevoCliente.getRut(),
 				nuevoCliente.getNombre(), nuevoCliente.getApellidoP(),
 				nuevoCliente.getApellidoM(), nuevoCliente.getEmail());
@@ -58,7 +63,7 @@ public class ClienteBean {
 	}
 
 	// Elimina un cliente
-	public String eliminarCliente() {
+	public String eliminarCliente() throws SQLException {
 		cliente = (Cliente) tablaTodosLosClientes.getRowData();
 		daoCliente.eliminaCliente(cliente.getRut());
 		return "eliminadoExitosamente";

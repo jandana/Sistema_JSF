@@ -12,12 +12,11 @@ import dao.IDAOCliente;
 public class DAOCliente implements IDAOCliente {
 
 	@Override
-	public Cliente buscarCliente(String nombre) {
+	public Cliente buscarCliente(String nombre) throws SQLException {
 		Cliente cliente = new Cliente();
 		DAOController dc = new DAOController();
 		Connection con = dc.getConnection();
 		try {
-			// setup statement and retrieve results
 			PreparedStatement pstmt = con
 					.prepareStatement("select * from cliente where nombre = ?");
 			pstmt.setString(1, nombre);
@@ -32,30 +31,26 @@ public class DAOCliente implements IDAOCliente {
 
 			}
 
-		} catch (Exception e) {
-			e.printStackTrace();
-
-			// throw new DAOException(DAOException.IMPOSIBLE_MAKE_QUERY);
+		} catch (SQLException e) {
+			throw new SQLException(e.getMessage());
 		} finally {
 			try {
 				con.close();
-				// } catch (SQLException e) {
 			} catch (SQLException e) {
 				// throw new
-				// DAOException(DAOException.IMPOSIBLE_CLOSE_CONNECTION);
+				throw new SQLException(e.getMessage());
 			}
 		}
 		return cliente;
 	}
 
 	@Override
-	public ArrayList<Cliente> getTodosLosCLientes() {
+	public ArrayList<Cliente> getTodosLosCLientes() throws SQLException {
 		Cliente cliente;
 		ArrayList<Cliente> clientes = new ArrayList<Cliente>();
 		DAOController dc = new DAOController();
 		Connection con = dc.getConnection();
 		try {
-			// setup statement and retrieve results
 			PreparedStatement pstmt = con
 					.prepareStatement("select * from cliente");
 			ResultSet rs = pstmt.executeQuery();
@@ -71,16 +66,12 @@ public class DAOCliente implements IDAOCliente {
 			}
 
 		} catch (Exception e) {
-			e.printStackTrace();
-
-			// throw new DAOException(DAOException.IMPOSIBLE_MAKE_QUERY);
+			throw new SQLException(e.getMessage());
 		} finally {
 			try {
 				con.close();
-				// } catch (SQLException e) {
 			} catch (SQLException e) {
-				// throw new
-				// DAOException(DAOException.IMPOSIBLE_CLOSE_CONNECTION);
+				throw new SQLException(e.getMessage());
 			}
 		}
 		return clientes;
@@ -88,12 +79,11 @@ public class DAOCliente implements IDAOCliente {
 
 	@Override
 	public void actualizarCliente(int RUT, String nombre, String apellidoP,
-			String apellidoM, String email) {
+			String apellidoM, String email) throws SQLException {
 		DAOController dc = new DAOController();
 		Connection con = dc.getConnection();
 
 		try {
-			// setup statement and retrieve results
 			PreparedStatement pstmt = con
 					.prepareStatement("update cliente set nombre=?,apellidoPaterno=?, apellidoMaterno=?, email=? where RUT=?");
 
@@ -105,22 +95,19 @@ public class DAOCliente implements IDAOCliente {
 			pstmt.executeUpdate();
 
 		} catch (Exception e) {
-			e.printStackTrace();
-
-			// throw new DAOException(DAOException.IMPOSIBLE_MAKE_QUERY);
+			throw new SQLException(e.getMessage());
 		} finally {
 			try {
 				con.close();
 			} catch (SQLException e) {
-				// throw new
-				// DAOException(DAOException.IMPOSIBLE_CLOSE_CONNECTION);
+				throw new SQLException(e.getMessage());
 			}
 		}
 	}
 
 	@Override
 	public void agregarCliente(int RUT, String nombre, String apellidoP,
-			String apellidoM, String email) {
+			String apellidoM, String email) throws SQLException {
 		DAOController dc = new DAOController();
 		Connection con = dc.getConnection();
 
@@ -136,55 +123,55 @@ public class DAOCliente implements IDAOCliente {
 			pstmt.executeUpdate();
 
 		} catch (Exception e) {
-			e.printStackTrace();
-
-			// throw new DAOException(DAOException.IMPOSIBLE_MAKE_QUERY);
+			throw new SQLException(e.getMessage());
 		} finally {
 			try {
 				con.close();
 			} catch (SQLException e) {
-				// throw new
-				// DAOException(DAOException.IMPOSIBLE_CLOSE_CONNECTION);
+				throw new SQLException(e.getMessage());
 			}
 		}
 
 	}
 
 	@Override
-	public void eliminaCliente(int RUT) {
+	public void eliminaCliente(int RUT) throws SQLException {
 		DAOController dc = new DAOController();
 		Connection con = dc.getConnection();
 
 		try {
-			// setup statement and retrieve results
 			PreparedStatement pstmt = con
 					.prepareStatement("DELETE FROM cliente WHERE RUT=?");
 
 			pstmt.setInt(1, RUT);
-
-			int a = pstmt.executeUpdate();
+			pstmt.executeUpdate();
 
 		} catch (Exception e) {
-			e.printStackTrace();
-
-			// throw new DAOException(DAOException.IMPOSIBLE_MAKE_QUERY);
+			throw new SQLException(e.getMessage());
 		} finally {
 			try {
 				con.close();
 			} catch (SQLException e) {
-				// throw new
-				// DAOException(DAOException.IMPOSIBLE_CLOSE_CONNECTION);
+				throw new SQLException(e.getMessage());
 			}
 		}
 	}
 
 	public static void main(String arrg[]) {
-		DAOCliente c = new DAOCliente();
+		// DAOCliente c = new DAOCliente();
 		// c.actualizarCliente(174580227, "javierga", "andana", "quijada",
 		// F "dadasdada");
 		// c.agregarCliente(123456789, "bart", "simpson", "bubie",
 		// "bart@gmail.com");
-		//c.eliminaCliente(123456789);
+		// c.eliminaCliente(123456789);
+		// System.out.println("dadasdasd");
+		// try {
+		// System.out.println("Main");
+		// c.buscarCliente("dasdadasd");
+		// } catch (SQLException e) {
+		// System.out.println(e.getMessage());
+		// }
+
 	}
 
 }

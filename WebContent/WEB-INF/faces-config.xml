@@ -44,5 +44,10 @@
 			<to-view-id>/index.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
-
+	<!-- Indica el archivo que  contiene los mensages de validaciones, en es te caso se llama error -->
+	<application>		
+        <message-bundle>
+           resources.error
+        </message-bundle>
+	</application>
 </faces-config>
