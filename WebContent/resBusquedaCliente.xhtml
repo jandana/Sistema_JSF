@@ -8,35 +8,33 @@
 <h:head></h:head>
 
 <body>
-<h1>Los datos del cliente son:</h1>
-	<table>
-		<tr>
-			<td><h:outputText value="RUT: " style="color:black" /></td>
-			<td><h:outputText value="#{clienteBean.cliente.rut}"
-					style="color:black" /></td>
-		</tr>
-		<tr>
-			<td><h:outputText value="Nombre: " style="color:black" /></td>
-			<td><h:outputText value="#{clienteBean.cliente.nombre}"
-					style="color:black" /></td>
-		</tr>
-		<tr>
-			<td><h:outputText value="Apellido paterno: " style="color:black" />
-			</td>
-			<td><h:outputText value="#{clienteBean.cliente.apellidoP}"
-					style="color:black" /></td>
-		</tr>
-		<tr>
-			<td><h:outputText value="Apellido materno: " style="color:black" />
-			</td>
-			<td><h:outputText value="#{clienteBean.cliente.apellidoM}"
-					style="color:black" /></td>
-		</tr>
-		<tr>
-			<td><h:outputText value="Email: " style="color:black" /></td>
-			<td><h:outputText value="#{clienteBean.cliente.email}"
-					style="color:black" /></td>
-		</tr>
-	</table>
+	<h1>Los datos del cliente son:</h1>
+
+	<h:panelGrid columns="2">
+		<h:outputText value="RUT: " style="color:black" />
+		<h:outputText value="#{clienteBean.cliente.rut}" style="color:black" />
+
+
+		<h:outputText value="Nombre: " style="color:black" />
+		<h:outputText value="#{clienteBean.cliente.nombre}"
+			style="color:black" />
+
+
+		<h:outputText value="Apellido paterno: " style="color:black" />
+
+		<h:outputText value="#{clienteBean.cliente.apellidoP}"
+			style="color:black" />
+
+
+		<h:outputText value="Apellido materno: " style="color:black" />
+
+		<h:outputText value="#{clienteBean.cliente.apellidoM}"
+			style="color:black" />
+
+
+		<h:outputText value="Email: " style="color:black" />
+		<h:outputText value="#{clienteBean.cliente.email}" style="color:black" />
+
+	</h:panelGrid>
 </body>
 </html>

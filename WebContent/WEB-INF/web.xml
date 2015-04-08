@@ -26,12 +26,18 @@
 	</context-param>
 	<!-- se guarda el estado de la app en el cliente de no ser especificado 
 		se guarda por default en el servidor, se supone que al especificar que se 
-		guarde en el cliente se ahorra ancho de banda o disminuye el consumo de memoria del servidor -->
+		guarde en el cliente se ahorra ancho de banda o disminuye el consumo de memoria 
+		del servidor -->
 	<context-param>
 		<description>State saving method: 'client' or 'server' (=default). See JSF Specification 2.5.2</description>
 		<param-name>javax.faces.STATE_SAVING_METHOD</param-name>
 		<param-value>client</param-value>
 	</context-param>
+
+	<session-config>
+		<session-timeout>30</session-timeout>
+	</session-config>
+
 	<!-- JSF mapping -->
 	<servlet>
 		<servlet-name>Faces Servlet</servlet-name>

@@ -9,87 +9,83 @@
 
 <h:head></h:head>
 <h:body>
-	<h:form>
-		<h1>Sistema JSF</h1>
+	<h1>Sistema JSF</h1>
 
-		<!-- 1er menu de  buscar un cliente filtrado por su nombre -->
-		<!--clienteBean.nombre			: Guarda el nombre que ingresa el usuario en una variable de tipo String en el bean cliente.
-			clienteBean.BuscarCliente 	: Invoca a un metodo del bean que a su vez llama unmetodo del DAO para que realice la 
+	<!-- 1er menu de  buscar un cliente filtrado por su nombre -->
+	<!--clienteBean.nombre				: Guarda el nombre que ingresa el usuario en una variable de tipo String en el bean cliente.
+		clienteBean.BuscarCliente 		: Invoca a un metodo del bean que a su vez llama unmetodo del DAO para que realice la 
 			 							  consulta, este metodo retorna un String necesario para el redireccionamiento.  
 		 -->
 
-		<h2>Buscar cliente por nombre:</h2>
-		<table>
-			<tr>
-				<td><h:outputText value="Ingrese el nombre del cliente: "
-						style="color:black" /></td>
-				<td><h:inputText id="nombreCliente"
-						value="#{clienteBean.nombre}" /></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td><h:commandButton value="Buscar"
-						action="#{clienteBean.BuscarCliente}"></h:commandButton></td>
-			</tr>
-		</table>
+	<h2>Buscar cliente por nombre:</h2>
+	<h:form>
+		<!-- panelGrid sirve para darle formato a los elementos (remplaza los td y tr) -->
+		<h:panelGrid columns="2">
+			<h:outputText value="Ingrese el nombre del cliente: "
+				style="color:black" />
+			<h:inputText id="nombreCliente" value="#{clienteBean.nombre}" />
+			<h:panelGroup />
+			<h:commandButton value="Buscar" action="#{clienteBean.BuscarCliente}"></h:commandButton>
+		</h:panelGrid>
+	</h:form>
 
-		<!-- 2do menu tabla con todos los clientes del sistema y la opcion de editar o eliminar  -->
-		<!-- clienteBean.todosLosClientes	: Retorna un ArrayList con todos los clientes.
+	<!-- 2do menu tabla con todos los clientes del sistema y la opcion de editar o eliminar  -->
+	<!-- clienteBean.todosLosClientes	: Retorna un ArrayList con todos los clientes.
 			 clienteBean.tablaTodosLosClientes : Hace referencia al objeto de tipo HtmlDataTable del bean el cual se 
 			 								encarga de hacer la relacion del elemento de la tabla seleccionado.	
 			 clienteBean.seleccionCliente	: Es el metodo que obtiene los datos del cliente selecionado al hacer click en en link y retorna un String con el redireccionamiento. 	 								
 			 clienteBean.eliminarCliente	: El metodo que elimina al cliente. 
 		-->
 
-		<h2>Ver todos los clientes:</h2>
-		<table>
+	<h2>Ver todos los clientes:</h2>
 
-			<h:dataTable value="#{clienteBean.todosLosClientes}" var="cliente"
-				binding="#{clienteBean.tablaTodosLosClientes}" border="1">
+	<h:form>
+		<h:dataTable value="#{clienteBean.todosLosClientes}" var="cliente"
+			binding="#{clienteBean.tablaTodosLosClientes}" border="1">
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="RUT" style="color:black" />
+				</f:facet>
+				<h:outputText value="#{cliente.rut}" style="color:black" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="NOMBRE" style="color:black" />
+				</f:facet>
+				<h:outputText value="#{cliente.nombre}" style="color:black" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="APELLIDO PATERNO" style="color:black" />
+				</f:facet>
+				<h:outputText value="#{cliente.apellidoP}" style="color:black" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="APELLIDO MATERNO" style="color:black" />
+				</f:facet>
+				<h:outputText value="#{cliente.apellidoM}" style="color:black" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="EMAIL" style="color:black" />
+				</f:facet>
+				<h:outputText value="#{cliente.email}" style="color:black" />
+			</h:column>s
 				<h:column>
-					<f:facet name="header">
-						<h:outputText value="RUT" style="color:black" />
-					</f:facet>
-					<h:outputText value="#{cliente.rut}" style="color:black" />
-				</h:column>
+				<f:facet name="header">
+					<h:outputText value="EDITAR" style="color:black" />
+				</f:facet>
+				<h:commandLink action="#{clienteBean.seleccionCliente}"> Editar </h:commandLink>
+			</h:column>s
 				<h:column>
-					<f:facet name="header">
-						<h:outputText value="NOMBRE" style="color:black" />
-					</f:facet>
-					<h:outputText value="#{cliente.nombre}" style="color:black" />
-				</h:column>
-				<h:column>
-					<f:facet name="header">
-						<h:outputText value="APELLIDO PATERNO" style="color:black" />
-					</f:facet>
-					<h:outputText value="#{cliente.apellidoP}" style="color:black" />
-				</h:column>
-				<h:column>
-					<f:facet name="header">
-						<h:outputText value="APELLIDO MATERNO" style="color:black" />
-					</f:facet>
-					<h:outputText value="#{cliente.apellidoM}" style="color:black" />
-				</h:column>
-				<h:column>
-					<f:facet name="header">
-						<h:outputText value="EMAIL" style="color:black" />
-					</f:facet>
-					<h:outputText value="#{cliente.email}" style="color:black" />
-				</h:column>s
-				<h:column>
-					<f:facet name="header">
-						<h:outputText value="EDITAR" style="color:black" />
-					</f:facet>
-					<h:commandLink action="#{clienteBean.seleccionCliente}"> Editar </h:commandLink>
-				</h:column>s
-				<h:column>
-					<f:facet name="header">
-						<h:outputText value="ELIMINAR" style="color:black" />
-					</f:facet>
-					<h:commandLink action="#{clienteBean.eliminarCliente}"> Eliminar </h:commandLink>
-				</h:column>s
+				<f:facet name="header">
+					<h:outputText value="ELIMINAR" style="color:black" />
+				</f:facet>
+				<h:commandLink action="#{clienteBean.eliminarCliente}"> Eliminar </h:commandLink>
+			</h:column>s
 			</h:dataTable>
-		</table>
+
 	</h:form>
 
 	<!-- 3er Menu permite agregar clientes al sistema -->
@@ -97,42 +93,39 @@
 		 -->
 	<h2>Agregar un cliente</h2>
 	<h:form>
-		<table>
-			<tr>
-				<!-- Ejemplo de una validacion de campo obligatorio (no olvidar especificar el archivo 
+
+		<!-- Ejemplo de una validacion de campo obligatorio (no olvidar especificar el archivo 
 				que contendra los mensages personalizados de validacion en el faces-config.xml) -->
-				<td><h:outputText value="RUT: "></h:outputText></td>
-				<td><h:inputText id="rut"
-						value="#{clienteBean.nuevoCliente.rut}" required="true" /></td>
-				<!-- especifica donde se ubicara el mensage -->
-				<td><h:message for="rut" style="color:red"></h:message></td>
-			</tr>
-			<tr>
-				<td><h:outputText value="Nombre: "></h:outputText></td>
-				<td><h:inputText id="nombre"
-						value="#{clienteBean.nuevoCliente.nombre}" /></td>
-			</tr>
-			<tr>
-				<td><h:outputText value="Apellido Paterno:"></h:outputText></td>
-				<td><h:inputText id="apellidoP"
-						value="#{clienteBean.nuevoCliente.apellidoP}" /></td>
-			</tr>
-			<tr>
-				<td><h:outputText value="Apellido materno:"></h:outputText></td>
-				<td><h:inputText id="apellidoM"
-						value="#{clienteBean.nuevoCliente.apellidoM}" /></td>
-			</tr>
-			<tr>
-				<td><h:outputText value="Email:"></h:outputText></td>
-				<td><h:inputText id="email"
-						value="#{clienteBean.nuevoCliente.email}" /></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td><h:commandButton value="Guardar"
-						action="#{clienteBean.agregarCliente}" /></td>
-			</tr>
-		</table>
+		<h:panelGrid columns="3">
+			<h:outputText value="RUT: "></h:outputText>
+			<h:inputText id="rut" value="#{clienteBean.nuevoCliente.rut}"
+				required="true" />
+			<!-- especifica donde se ubicara el mensage -->
+			<h:message for="rut" style="color:red"></h:message>
+
+
+			<h:outputText value="Nombre: "></h:outputText>
+			<h:inputText id="nombre" value="#{clienteBean.nuevoCliente.nombre}" />
+			<h:panelGroup />
+
+			<h:outputText value="Apellido Paterno:"></h:outputText>
+			<h:inputText id="apellidoP"
+				value="#{clienteBean.nuevoCliente.apellidoP}" />
+			<h:panelGroup />
+
+			<h:outputText value="Apellido materno:"></h:outputText>
+			<h:inputText id="apellidoM"
+				value="#{clienteBean.nuevoCliente.apellidoM}" />
+			<h:panelGroup />
+
+			<h:outputText value="Email:"></h:outputText>
+			<h:inputText id="email" value="#{clienteBean.nuevoCliente.email}" />
+			<h:panelGroup />
+
+			<h:panelGroup />
+			<h:commandButton value="Guardar"
+				action="#{clienteBean.agregarCliente}" />
+		</h:panelGrid>
 	</h:form>
 </h:body>
 </html>

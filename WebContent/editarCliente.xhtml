@@ -10,37 +10,33 @@
 <h:body>
 	<h2>Edicion de cliente</h2>
 	<h:form>
-		<table>
-			<tr>
-				<td><h:outputText value="RUT: "></h:outputText></td>
-				<td><h:outputText id="rut" value="#{clienteBean.cliente.rut}" /></td>
-			</tr>
-			<tr>
-				<td><h:outputText value="Nombre: "></h:outputText></td>
-				<td><h:inputText id="nombre"
-						value="#{clienteBean.cliente.nombre}" /></td>
-			</tr>
-			<tr>
-				<td><h:outputText value="Apellido Paterno:"></h:outputText></td>
-				<td><h:inputText id="apellidoP"
-						value="#{clienteBean.cliente.apellidoP}" /></td>
-			</tr>
-			<tr>
-				<td><h:outputText value="Apellido materno:"></h:outputText></td>
-				<td><h:inputText id="apellidoM"
-						value="#{clienteBean.cliente.apellidoM}" /></td>
-			</tr>
-			<tr>
-				<td><h:outputText value="Email:"></h:outputText></td>
-				<td><h:inputText id="email"
-						value="#{clienteBean.cliente.email}" /></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td><h:commandButton value="Guardar"
-						action="#{clienteBean.actualizarCliente}" /></td>
-			</tr>
-		</table>
+		<h:panelGrid columns="2">
+
+			<h:outputText value="RUT: "></h:outputText>
+			<h:outputText id="rut" value="#{clienteBean.cliente.rut}" />
+
+
+			<h:outputText value="Nombre: "></h:outputText>
+			<h:inputText id="nombre" value="#{clienteBean.cliente.nombre}" />
+
+
+			<h:outputText value="Apellido Paterno:"></h:outputText>
+			<h:inputText id="apellidoP" value="#{clienteBean.cliente.apellidoP}" />
+
+
+			<h:outputText value="Apellido materno:"></h:outputText>
+			<h:inputText id="apellidoM" value="#{clienteBean.cliente.apellidoM}" />
+
+
+			<h:outputText value="Email:"></h:outputText>
+			<h:inputText id="email" value="#{clienteBean.cliente.email}" />
+
+
+
+			<h:commandButton value="Guardar"
+				action="#{clienteBean.actualizarCliente}" />
+
+		</h:panelGrid>
 	</h:form>
 </h:body>
 </html>
