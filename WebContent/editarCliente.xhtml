@@ -10,29 +10,33 @@
 <h:body>
 	<h2>Edicion de cliente</h2>
 	<h:form>
-		<h:panelGrid columns="2">
+		<h:panelGrid columns="3">
 
 			<h:outputText value="RUT: "></h:outputText>
 			<h:outputText id="rut" value="#{clienteBean.cliente.rut}" />
-
+			<h:panelGroup />
 
 			<h:outputText value="Nombre: "></h:outputText>
 			<h:inputText id="nombre" value="#{clienteBean.cliente.nombre}" />
-
+			<h:panelGroup />
 
 			<h:outputText value="Apellido Paterno:"></h:outputText>
 			<h:inputText id="apellidoP" value="#{clienteBean.cliente.apellidoP}" />
-
+			<h:panelGroup />
 
 			<h:outputText value="Apellido materno:"></h:outputText>
 			<h:inputText id="apellidoM" value="#{clienteBean.cliente.apellidoM}" />
+			<h:panelGroup />
 
-
+			<!-- validacion personalisada de email (se especifica en la clase EmailValide de pakage validators) -->
 			<h:outputText value="Email:"></h:outputText>
-			<h:inputText id="email" value="#{clienteBean.cliente.email}" />
+			<h:inputText id="email" value="#{clienteBean.cliente.email}"
+				required="true">
+				<f:validator validatorId="emailValidator"></f:validator>
+			</h:inputText>
+			<h:message for="email" style="color:red"></h:message>
 
-
-
+			<h:panelGroup />
 			<h:commandButton value="Guardar"
 				action="#{clienteBean.actualizarCliente}" />
 

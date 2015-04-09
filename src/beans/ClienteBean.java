@@ -3,6 +3,7 @@ package beans;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import javax.annotation.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.component.html.HtmlDataTable;
 
@@ -13,7 +14,9 @@ import exceptions.ClienteException;
 /**
  * Session Bean implementation class ClienteBean
  */
-
+/* La anotacion @ManagedBean especifica que esta clase sera usada como un bean. Con la anotacion @ManagedBean(name="cliente") especificariamos el nombre 
+ * las anotaciones reemplazan la definicion del bean en el faces-cofig.xml
+ * */
 @SessionScoped
 public class ClienteBean {
 	private DAOCliente daoCliente = new DAOCliente();

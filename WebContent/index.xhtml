@@ -77,14 +77,14 @@
 					<h:outputText value="EDITAR" style="color:black" />
 				</f:facet>
 				<h:commandLink action="#{clienteBean.seleccionCliente}"> Editar </h:commandLink>
-			</h:column>s
-				<h:column>
+			</h:column>
+			<h:column>
 				<f:facet name="header">
 					<h:outputText value="ELIMINAR" style="color:black" />
 				</f:facet>
 				<h:commandLink action="#{clienteBean.eliminarCliente}"> Eliminar </h:commandLink>
-			</h:column>s
-			</h:dataTable>
+			</h:column>
+		</h:dataTable>
 
 	</h:form>
 
@@ -100,7 +100,6 @@
 			<h:outputText value="RUT: "></h:outputText>
 			<h:inputText id="rut" value="#{clienteBean.nuevoCliente.rut}"
 				required="true" />
-			<!-- especifica donde se ubicara el mensage -->
 			<h:message for="rut" style="color:red"></h:message>
 
 
@@ -118,9 +117,13 @@
 				value="#{clienteBean.nuevoCliente.apellidoM}" />
 			<h:panelGroup />
 
+			<!-- validacion personalisada de email (se especifica en la clase EmailValide de pakage validators) -->
 			<h:outputText value="Email:"></h:outputText>
-			<h:inputText id="email" value="#{clienteBean.nuevoCliente.email}" />
-			<h:panelGroup />
+			<h:inputText id="email" value="#{clienteBean.nuevoCliente.email}"
+				required="true">
+				<f:validator validatorId="emailValidator"></f:validator>
+			</h:inputText>
+			<h:message for="email" style="color:red"></h:message>
 
 			<h:panelGroup />
 			<h:commandButton value="Guardar"
