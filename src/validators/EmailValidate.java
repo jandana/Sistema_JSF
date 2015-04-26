@@ -13,7 +13,7 @@ import javax.faces.validator.ValidatorException;
 
 @FacesValidator("emailValidator")
 public class EmailValidate implements Validator {
-
+	/* Esta clase provee un validador personalizado de email */
 	@Override
 	public void validate(FacesContext facesContext, UIComponent uIComponent,
 			Object value) throws ValidatorException {

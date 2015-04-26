@@ -3,20 +3,20 @@ package beans;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import javax.annotation.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.component.html.HtmlDataTable;
 
 import modelo.Cliente;
 import dao.impl.DAOCliente;
-import exceptions.ClienteException;
 
 /**
  * Session Bean implementation class ClienteBean
  */
-/* La anotacion @ManagedBean especifica que esta clase sera usada como un bean. Con la anotacion @ManagedBean(name="cliente") especificariamos el nombre 
- * las anotaciones reemplazan la definicion del bean en el faces-cofig.xml
- * */
+/*
+ * La anotacion @ManagedBean especifica que esta clase sera usada como un bean.
+ * Con la anotacion @ManagedBean(name="cliente") especificariamos el nombre las
+ * anotaciones reemplazan la definicion del bean en el faces-cofig.xml
+ */
 @SessionScoped
 public class ClienteBean {
 	private DAOCliente daoCliente = new DAOCliente();
@@ -31,10 +31,10 @@ public class ClienteBean {
 	}
 
 	// busca un cliente en base a su nombre
-	public String BuscarCliente() throws SQLException, ClienteException {
+	public String BuscarCliente() throws SQLException {
 		this.cliente = daoCliente.buscarCliente(nombre);
 		if (cliente.getNombre() == null) {
-			//throw new ClienteException();
+			// throw new ClienteException();
 			return "clienteNoEncontrado";
 		} else {
 			return "clienteEncontrado";
@@ -72,6 +72,16 @@ public class ClienteBean {
 		return "eliminadoExitosamente";
 	}
 
+	// Para la tabla
+	public void setTablaTodosLosClientes(HtmlDataTable tablaTodosLosClientes) {
+		this.tablaTodosLosClientes = tablaTodosLosClientes;
+	}
+
+	public String seleccionCliente() {
+		cliente = (Cliente) tablaTodosLosClientes.getRowData();
+		return "EditarCliente";
+	}
+
 	public String getNombre() {
 		return nombre;
 	}
@@ -94,15 +104,6 @@ public class ClienteBean {
 
 	public HtmlDataTable getTablaTodosLosClientes() {
 		return tablaTodosLosClientes;
-	}
-
-	public void setTablaTodosLosClientes(HtmlDataTable tablaTodosLosClientes) {
-		this.tablaTodosLosClientes = tablaTodosLosClientes;
-	}
-
-	public String seleccionCliente() {
-		cliente = (Cliente) tablaTodosLosClientes.getRowData();
-		return "EditarCliente";
 	}
 
 	public Cliente getNuevoCliente() {

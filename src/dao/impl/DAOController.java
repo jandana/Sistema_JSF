@@ -21,7 +21,6 @@ public class DAOController implements IDAOController {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 		} catch (ClassNotFoundException e) {
-
 			// throw new DAOException(DAOException.IMPOSIBLE_FIND_DRIVER);
 		}
 		try {
