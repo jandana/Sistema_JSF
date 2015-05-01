@@ -21,23 +21,24 @@ public class DAOCliente implements IDAOCliente {
 					.prepareStatement("select * from cliente where nombre = ?");
 			pstmt.setString(1, nombre);
 			ResultSet rs = pstmt.executeQuery();
-
+			
 			while (rs.next()) {
 				cliente.setNombre(rs.getString("nombre"));
 				cliente.setApellidoP(rs.getString("apellidoPaterno"));
 				cliente.setApellidoM(rs.getString("apellidoMaterno"));
 				cliente.setRut(rs.getInt("RUT"));
 				cliente.setEmail(rs.getString("email"));
-
 			}
+			pstmt.close(); 
+			rs.close();
 
 		} catch (SQLException e) {
 			throw new SQLException(e.getMessage());
 		} finally {
 			try {
 				con.close();
+
 			} catch (SQLException e) {
-				// throw new
 				throw new SQLException(e.getMessage());
 			}
 		}
@@ -64,7 +65,8 @@ public class DAOCliente implements IDAOCliente {
 				cliente.setEmail(rs.getString("email"));
 				clientes.add(cliente);
 			}
-
+			pstmt.close(); 
+			rs.close();
 		} catch (Exception e) {
 			throw new SQLException(e.getMessage());
 		} finally {
@@ -93,7 +95,8 @@ public class DAOCliente implements IDAOCliente {
 			pstmt.setString(4, email);
 			pstmt.setInt(5, RUT);
 			pstmt.executeUpdate();
-
+			pstmt.close(); 
+			
 		} catch (Exception e) {
 			throw new SQLException(e.getMessage());
 		} finally {
@@ -121,7 +124,8 @@ public class DAOCliente implements IDAOCliente {
 			pstmt.setString(4, apellidoM);
 			pstmt.setString(5, email);
 			pstmt.executeUpdate();
-
+			pstmt.close(); 
+	
 		} catch (Exception e) {
 			throw new SQLException(e.getMessage());
 		} finally {
@@ -145,7 +149,8 @@ public class DAOCliente implements IDAOCliente {
 
 			pstmt.setInt(1, RUT);
 			pstmt.executeUpdate();
-
+			pstmt.close(); 
+	
 		} catch (Exception e) {
 			throw new SQLException(e.getMessage());
 		} finally {

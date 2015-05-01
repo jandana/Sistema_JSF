@@ -21,14 +21,12 @@ public class DAOController implements IDAOController {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 		} catch (ClassNotFoundException e) {
-			// throw new DAOException(DAOException.IMPOSIBLE_FIND_DRIVER);
+			System.out.println(e.getMessage());
 		}
 		try {
 			con = DriverManager.getConnection(URL, USER, PASSWORD);
 		} catch (SQLException e) {
-			System.out.println(e);
-			// throw new
-			// DAOException(DAOException.IMPOSIBLE_ESTABLISH_CONNECTION);
+			System.out.println(e.getMessage());
 		}
 		return con;
 	}
