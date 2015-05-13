@@ -15,8 +15,15 @@ import dao.impl.DAOCliente;
 /*
  * La anotacion @ManagedBean especifica que esta clase sera usada como un bean.
  * Con la anotacion @ManagedBean(name="cliente") especificariamos el nombre las
- * anotaciones reemplazan la definicion del bean en el faces-cofig.xml
+ * anotaciones reemplazan la definicion del bean en el faces-cofig.xml Ejemplo
+ * 
+ * @Named(value = "nombre")
+ * 
+ * @ManagedBean
+ * 
+ * @RequestScoped
  */
+
 @SessionScoped
 public class ClienteBean {
 	private DAOCliente daoCliente = new DAOCliente();
